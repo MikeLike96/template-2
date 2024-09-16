@@ -8,13 +8,18 @@ const OnboardingForm: React.FC = () => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
-  const [subscribeUpdates, setSubscribeUpdates] = useState(false);
+  const [swarmSize, setSwarmSize] = useState('');
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('User data:', { fullName, email, company, subscribeUpdates });
-    router.push('/dashboard');
+    const params = new URLSearchParams({
+      firstName: fullName.split(' ')[0], // Assuming the first name is the first word
+      email,
+      company,
+      swarmSize
+    });
+    router.push(`/gettingstarted?${params.toString()}`);
   };
 
   return (
@@ -26,8 +31,8 @@ const OnboardingForm: React.FC = () => {
             <Image 
               src="/content-swarm-logo.png" 
               alt="Content Swarm Logo" 
-              width={150} 
-              height={40} 
+              width={150}
+              height={40}
             />
           </div>
           <a 
@@ -107,20 +112,25 @@ const OnboardingForm: React.FC = () => {
                         onChange={(e) => setCompany(e.target.value)}
                       />
                     </div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <input
-                      id="subscribe-updates"
-                      name="subscribe-updates"
-                      type="checkbox"
-                      className="h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded"
-                      checked={subscribeUpdates}
-                      onChange={(e) => setSubscribeUpdates(e.target.checked)}
-                    />
-                    <label htmlFor="subscribe-updates" className="ml-2 block text-sm text-gray-400">
-                      Subscribe to product update emails
-                    </label>
+                    <div>
+                      <label htmlFor="swarmSize" className="block text-sm font-medium text-gray-300 mb-2">
+                        Please select your swarm size:
+                      </label>
+                      <select
+                        id="swarmSize"
+                        name="swarmSize"
+                        required
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-700 placeholder-gray-500 text-white bg-gray-800 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
+                        value={swarmSize}
+                        onChange={(e) => setSwarmSize(e.target.value)}
+                      >
+                        <option value="">Select swarm size</option>
+                        <option value="10-24">10 - 24 users</option>
+                        <option value="25-49">25 - 49 users</option>
+                        <option value="50-99">50 - 99 users</option>
+                        <option value="100-250">100 - 250 users</option>
+                      </select>
+                    </div>
                   </div>
 
                   <div>
@@ -137,15 +147,16 @@ const OnboardingForm: React.FC = () => {
 
             {/* Right side - Image */}
             <div className="w-1/2 pl-8 flex items-center justify-center">
-              <div className="w-full h-full rounded-lg overflow-hidden relative">
+              <div className="w-full max-w-xl relative">
                 <Image 
                   src="/cs piles 3.png" 
                   alt="Content Swarm Features" 
-                  width={800} 
-                  height={800} 
-                  layout="responsive" 
+                  width={1000}
+                  height={1000}
+                  layout="responsive"
+                  className="rounded-lg"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent rounded-lg"></div>
               </div>
             </div>
           </div>
