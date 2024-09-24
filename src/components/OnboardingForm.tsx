@@ -5,18 +5,24 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 const OnboardingForm: React.FC = () => {
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [company, setCompany] = useState('');
+  // State variables for form fields
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [companyEmail, setCompanyEmail] = useState('');
+  const [swarmName, setSwarmName] = useState('');
+  const [companyName, setCompanyName] = useState('');
   const [swarmSize, setSwarmSize] = useState('');
   const router = useRouter();
 
+  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const params = new URLSearchParams({
-      firstName: fullName.split(' ')[0], // Assuming the first name is the first word
-      email,
-      company,
+      firstName,
+      lastName,
+      companyEmail,
+      swarmName,
+      companyName,
       swarmSize
     });
     router.push(`/gettingstarted?${params.toString()}`);
@@ -68,48 +74,78 @@ const OnboardingForm: React.FC = () => {
                 <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
                   <div className="rounded-md shadow-sm space-y-4">
                     <div>
-                      <label htmlFor="fullName" className="sr-only">
-                        Full name
+                      <label htmlFor="firstName" className="sr-only">
+                        First name
                       </label>
                       <input
-                        id="fullName"
-                        name="fullName"
+                        id="firstName"
+                        name="firstName"
                         type="text"
                         required
                         className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-700 placeholder-gray-500 text-white bg-gray-800 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
-                        placeholder="Full name"
-                        value={fullName}
-                        onChange={(e) => setFullName(e.target.value)}
+                        placeholder="First name"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="sr-only">
-                        Email address
+                      <label htmlFor="lastName" className="sr-only">
+                        Last name
                       </label>
                       <input
-                        id="email"
-                        name="email"
+                        id="lastName"
+                        name="lastName"
+                        type="text"
+                        required
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-700 placeholder-gray-500 text-white bg-gray-800 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
+                        placeholder="Last name"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="companyEmail" className="sr-only">
+                        Company email
+                      </label>
+                      <input
+                        id="companyEmail"
+                        name="companyEmail"
                         type="email"
                         required
                         className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-700 placeholder-gray-500 text-white bg-gray-800 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
-                        placeholder="Email address"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Company email"
+                        value={companyEmail}
+                        onChange={(e) => setCompanyEmail(e.target.value)}
                       />
                     </div>
                     <div>
-                      <label htmlFor="company" className="sr-only">
-                        Company
+                      <label htmlFor="swarmName" className="sr-only">
+                        Swarm name
                       </label>
                       <input
-                        id="company"
-                        name="company"
+                        id="swarmName"
+                        name="swarmName"
                         type="text"
                         required
                         className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-700 placeholder-gray-500 text-white bg-gray-800 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
-                        placeholder="Company"
-                        value={company}
-                        onChange={(e) => setCompany(e.target.value)}
+                        placeholder="Swarm name"
+                        value={swarmName}
+                        onChange={(e) => setSwarmName(e.target.value)}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="companyName" className="sr-only">
+                        Company name
+                      </label>
+                      <input
+                        id="companyName"
+                        name="companyName"
+                        type="text"
+                        required
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-700 placeholder-gray-500 text-white bg-gray-800 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
+                        placeholder="Company name"
+                        value={companyName}
+                        onChange={(e) => setCompanyName(e.target.value)}
                       />
                     </div>
                     <div>
