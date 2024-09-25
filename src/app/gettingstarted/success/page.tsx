@@ -1,9 +1,22 @@
+'use client';
+
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import confetti from 'canvas-confetti';
 
 export default function SuccessPage() {
+  useEffect(() => {
+    // Trigger confetti effect when the component mounts
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+  }, []);
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
-      <h1 className="text-4xl font-extrabold mb-4">Congratulations!</h1>
+      <h1 className="text-4xl font-extrabold mb-4">Profile Created!</h1>
       <p className="text-xl mb-8">You have successfully created your swarm profile.</p>
       <Link
         href="/app"
