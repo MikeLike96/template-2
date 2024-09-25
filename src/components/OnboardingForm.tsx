@@ -68,8 +68,11 @@ const OnboardingForm: React.FC = () => {
                     </div>
                   </div>
                   <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
-                    Content Swarm Onboarding
+                    Welcome to Content Swarm!
                   </h2>
+                  <p className="mt-2 text-center text-sm text-gray-400">
+                    Let's get started! Please enter your details below to set up your account.
+                  </p>
                 </div>
                 <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
                   <div className="rounded-md shadow-sm space-y-4">
