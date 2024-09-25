@@ -53,13 +53,13 @@ const OnboardingForm: React.FC = () => {
       </header>
 
       {/* Main content */}
-      <div className="flex-grow flex items-center justify-center px-4">
+      <div className="flex-grow flex items-center justify-center px-4 py-12"> {/* Added vertical padding */}
         <div className="w-full max-w-6xl">
           <div className="flex">
             {/* Left side - Form */}
             <div className="w-1/2 pr-8">
               <div className="max-w-md w-full space-y-8">
-                <div>
+                <div className="pt-8"> {/* Increased top padding */}
                   <div className="flex justify-center">
                     <div className="w-24 h-24 rounded-full bg-orange-500 flex items-center justify-center">
                       <svg className="h-12 w-12 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -172,7 +172,7 @@ const OnboardingForm: React.FC = () => {
                     </div>
                   </div>
 
-                  <div>
+                  <div className="pt-4 pb-8"> {/* Added padding top and bottom */}
                     <button
                       type="submit"
                       className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
@@ -195,7 +195,7 @@ const OnboardingForm: React.FC = () => {
                   layout="responsive"
                   className="rounded-lg"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent rounded-lg"></div>
+                {/* Removed the gradient overlay div */}
               </div>
             </div>
           </div>
