@@ -71,7 +71,7 @@ export function OnboardingForm2() {
                     Welcome to Content Swarm!
                   </h2>
                   <p className="mt-2 text-center text-sm text-gray-400">
-                    Let's get started! Please enter your details below to set up your account.
+                    Your 14 day free trial is ready! Please enter your details below to set up your account.
                   </p>
                 </div>
                 <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
