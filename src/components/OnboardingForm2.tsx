@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
-const OnboardingForm: React.FC = () => {
+export function OnboardingForm2() {
   // State variables for form fields
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -203,6 +203,6 @@ const OnboardingForm: React.FC = () => {
       </div>
     </div>
   );
-};
+}
 
-export default OnboardingForm;
+export default OnboardingForm2;

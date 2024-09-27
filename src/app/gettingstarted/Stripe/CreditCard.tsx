@@ -9,11 +9,14 @@ function CreditCardForm() {
   const [cardNumber, setCardNumber] = useState('');
   const [expiry, setExpiry] = useState('');
   const [cvc, setCvc] = useState('');
+  const router = useRouter();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log('Form submitted:', { name, cardNumber, expiry, cvc });
     // In a real application, you would handle the submission here
+    // After successful submission, navigate to OnboardingForm2
+    router.push('/components/OnboardingForm2');
   };
 
   return (
