@@ -22,16 +22,13 @@ export default function ClientComponent() {
 
   return (
     <>
-      <h2 className="text-3xl font-extrabold text-white mb-6">
-        Welcome, {firstName}!
+      <h2 className="text-3xl font-extrabold text-white mb-2">
+        Enter Verification Code
       </h2>
       
       {/* Verification section */}
-      <div className="mt-8 max-w-md w-full space-y-8">
-        <h3 className="text-xl font-bold text-white mb-2">
-          Enter Verification Code
-        </h3>
-        <p className="text-gray-400 mb-4">
+      <div className="mt-2 max-w-md w-full space-y-4">
+        <p className="text-gray-400">
           Please enter the 5-character verification code sent to your email inbox.
         </p>
         <form onSubmit={handleVerificationSubmit} className="space-y-6">

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { MdEmail } from 'react-icons/md'; // Import the email icon
 
 const OnboardingForm: React.FC = () => {
   // State variable for email field
@@ -50,13 +51,11 @@ const OnboardingForm: React.FC = () => {
                 <div className="pt-8">
                   <div className="flex justify-center">
                     <div className="w-24 h-24 rounded-full bg-orange-500 flex items-center justify-center">
-                      <svg className="h-12 w-12 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                      </svg>
+                      <MdEmail className="h-12 w-12 text-white" /> {/* Replace the SVG with MdEmail icon */}
                     </div>
                   </div>
                   <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
-                    Welcome to Content Swarm!
+                    Enter your email
                   </h2>
                   <p className="mt-2 text-center text-sm text-gray-400">
                     Please enter your email to receive a confirmation and get started.
