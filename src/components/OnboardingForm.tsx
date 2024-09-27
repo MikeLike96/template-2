@@ -95,14 +95,9 @@ const OnboardingForm: React.FC = () => {
             {/* Right side - Image */}
             <div className="w-1/2 pl-8 flex items-center justify-center">
               <div className="w-full max-w-xl relative">
-                <Image 
-                  src="/cs piles 3.png" 
-                  alt="Content Swarm Features" 
-                  width={1000}
-                  height={1000}
-                  layout="responsive"
-                  className="rounded-lg"
-                />
+                <div className="bg-gray-700 rounded-lg flex items-center justify-center" style={{ aspectRatio: '1 / 1' }}>
+                  <p className="text-gray-400 text-lg">Image placeholder</p>
+                </div>
               </div>
             </div>
           </div>

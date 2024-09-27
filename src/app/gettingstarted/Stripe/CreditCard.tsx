@@ -124,8 +124,8 @@ export function CreditCard() {
       </header>
 
       {/* Main content */}
-      <div className="flex-grow flex items-center justify-center">
-        <div className="max-w-md w-full space-y-8 px-4">
+      <div className="flex-grow flex items-center justify-center p-4">
+        <div className="max-w-6xl w-full">
           {/* Back button */}
           <button
             onClick={handleBack}
@@ -139,15 +139,31 @@ export function CreditCard() {
             <span className="text-sm">Back</span>
           </button>
 
-          <div className="text-center">
-            <h2 className="mt-6 text-3xl font-extrabold text-white">
-              Enter Payment Details
-            </h2>
-            <p className="mt-2 text-sm text-gray-400">
-              Please provide your credit card information to start your free trial.
-            </p>
+          <div className="flex flex-col md:flex-row gap-8">
+            {/* Left side - Credit Card Form */}
+            <div className="w-full md:w-1/2">
+              <div className="text-center md:text-left">
+                <h2 className="mt-6 text-3xl font-extrabold text-white">
+                  Enter Payment Details
+                </h2>
+                <p className="mt-2 text-sm text-gray-400">
+                  Please provide your credit card information to start your free trial.
+                </p>
+              </div>
+              <div className="mt-8">
+                <CreditCardForm />
+              </div>
+            </div>
+
+            {/* Right side - Image Placeholder */}
+            <div className="w-full md:w-1/2 flex items-center justify-center">
+              <div className="w-full max-w-xl relative">
+                <div className="bg-gray-700 rounded-lg flex items-center justify-center" style={{ aspectRatio: '1 / 1' }}>
+                  <p className="text-gray-400 text-lg">Image placeholder</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <CreditCardForm />
         </div>
       </div>
     </div>
