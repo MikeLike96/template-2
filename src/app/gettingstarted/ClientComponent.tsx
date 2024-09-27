@@ -7,11 +7,11 @@ export default function ClientComponent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const firstName = searchParams.get('firstName') || 'User';
-  const [linkedinUrl, setLinkedinUrl] = useState('');
+  const [verificationCode, setVerificationCode] = useState('');
 
-  const handleLinkedinSubmit = async (e: React.FormEvent) => {
+  const handleVerificationSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Verification code submitted:', linkedinUrl);
+    console.log('Verification code submitted:', verificationCode);
     
     // Simulate API call with a timeout
     await new Promise(resolve => setTimeout(resolve, 1000));
@@ -34,7 +34,7 @@ export default function ClientComponent() {
         <p className="text-gray-400 mb-4">
           Please enter the 5-character verification code sent to your email inbox.
         </p>
-        <form onSubmit={handleLinkedinSubmit} className="space-y-6">
+        <form onSubmit={handleVerificationSubmit} className="space-y-6">
           <div className="flex justify-between mb-4">
             {[0, 1, 2, 3, 4].map((index) => (
               <input
@@ -44,10 +44,10 @@ export default function ClientComponent() {
                 className="w-14 h-12 text-center bg-gray-800 text-white rounded-md border border-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
                 required
                 pattern="[A-Za-z0-9]"
-                value={linkedinUrl[index] || ''}
+                value={verificationCode[index] || ''}
                 onChange={(e) => {
                   const newValue = e.target.value;
-                  setLinkedinUrl((prev) => {
+                  setVerificationCode((prev) => {
                     const updated = prev.split('');
                     updated[index] = newValue;
                     return updated.join('');

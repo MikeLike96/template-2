@@ -123,17 +123,19 @@ export function CreditCard() {
       {/* Main content */}
       <div className="flex-grow flex items-center justify-center">
         <div className="max-w-md w-full space-y-8 px-4">
-          <div className="mb-8 flex items-center">
-            <button
-              onClick={handleBack}
-              className="bg-gray-800 p-2 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600 border border-gray-700 mr-2"
-            >
+          {/* Back button */}
+          <button
+            onClick={handleBack}
+            className="inline-flex items-center mb-6 text-gray-300 hover:text-white transition-colors"
+          >
+            <div className="bg-gray-700 p-1 rounded-lg border border-gray-600 mr-2">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
-            </button>
-            <span className="text-gray-300 text-sm">Back</span>
-          </div>
+            </div>
+            <span className="text-sm">Back</span>
+          </button>
+
           <div className="text-center">
             <h2 className="mt-6 text-3xl font-extrabold text-white">
               Enter Payment Details
