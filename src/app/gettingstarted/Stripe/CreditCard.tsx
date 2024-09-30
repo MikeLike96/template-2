@@ -9,14 +9,31 @@ function CreditCardForm() {
   const [cardNumber, setCardNumber] = useState('');
   const [expiry, setExpiry] = useState('');
   const [cvc, setCvc] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('Form submitted:', { name, cardNumber, expiry, cvc });
-    // In a real application, you would handle the submission here
-    // After successful submission, navigate to OnboardingForm2
-    router.push('/components/OnboardingForm2');
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      // Perform client-side validation
+      if (!validateCreditCardDetails(name, cardNumber, expiry, cvc)) {
+        throw new Error('Invalid credit card details');
+      }
+
+      // Simulate API call with a timeout
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      console.log('Form submitted:', { name, cardNumber, expiry, cvc });
+      router.push('/gettingstarted/linkedin-sync');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An error occurred');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -79,17 +96,27 @@ function CreditCardForm() {
           />
         </div>
       </div>
+      {error && (
+        <p className="text-red-500 text-sm">{error}</p>
+      )}
       <button
         type="submit"
-        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+        disabled={isLoading}
+        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50"
       >
-        Start Free Trial
+        {isLoading ? 'Processing...' : 'Start Free Trial'}
       </button>
       <p className="text-sm text-gray-400 text-center mt-2">
         Your card won&apos;t be charged during the 14-day free trial.
       </p>
     </form>
   );
+}
+
+// Helper function for credit card validation (implement according to your needs)
+function validateCreditCardDetails(name: string, cardNumber: string, expiry: string, cvc: string): boolean {
+  // Implement your validation logic here
+  return true; // Placeholder return
 }
 
 export function CreditCard() {
