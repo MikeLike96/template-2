@@ -86,7 +86,7 @@ function CreditCardForm() {
         Start Free Trial
       </button>
       <p className="text-sm text-gray-400 text-center mt-2">
-        Your card won't be charged during the 14-day free trial.
+        Your card won&apos;t be charged during the 14-day free trial.
       </p>
     </form>
   );
