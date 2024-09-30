@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { ArrowLeft } from 'lucide-react';
 
 export function OnboardingForm2() {
   // State variables for form fields
@@ -25,7 +26,11 @@ export function OnboardingForm2() {
       companyName,
       swarmSize
     });
-    router.push(`/gettingstarted/linkedin-review?${params.toString()}`);
+    router.push(`/gettingstarted/linkedin-sync?${params.toString()}`);
+  };
+
+  const handleBack = () => {
+    router.push('/gettingstarted/Stripe/CreditCard');
   };
 
   return (
@@ -59,6 +64,18 @@ export function OnboardingForm2() {
             {/* Left side - Form */}
             <div className="w-1/2 pr-8">
               <div className="max-w-md w-full space-y-8">
+                {/* Back button */}
+                <button
+                  onClick={handleBack}
+                  className="inline-flex items-center mb-6 text-gray-300 hover:text-white transition-colors"
+                >
+                  <div className="bg-gray-700 p-1 rounded-lg border border-gray-600 mr-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                  </div>
+                  <span className="text-sm">Back</span>
+                </button>
                 <div className="pt-8"> {/* Increased top padding */}
                   <div className="flex justify-center">
                     <div className="w-24 h-24 rounded-full bg-orange-500 flex items-center justify-center">
