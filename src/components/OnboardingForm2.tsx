@@ -25,7 +25,7 @@ export function OnboardingForm2() {
       companyName,
       swarmSize
     });
-    router.push(`/gettingstarted?${params.toString()}`);
+    router.push(`/gettingstarted/linkedin-review?${params.toString()}`);
   };
 
   return (

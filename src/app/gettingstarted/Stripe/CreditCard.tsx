@@ -28,7 +28,8 @@ function CreditCardForm() {
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       console.log('Form submitted:', { name, cardNumber, expiry, cvc });
-      router.push('/gettingstarted/linkedin-sync');
+      // Change this line to route to the correct path
+      router.push('/onboarding2');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
     } finally {

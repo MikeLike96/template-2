@@ -17,8 +17,8 @@ export default function LinkedInSyncPage() {
     // Simulate API call with a timeout
     await new Promise(resolve => setTimeout(resolve, 1000));
     
-    // Redirect to the success page
-    router.push('/gettingstarted/success');
+    // Redirect to the LinkedIn review page
+    router.push('/gettingstarted/linkedin-review');
   };
 
   const handleBack = () => {
