@@ -10,14 +10,46 @@ import type { JSX } from 'react';
 // Define the structure of a slide
 interface Slide {
   title: string;
-  description: string;
+  description: JSX.Element; // Changed to JSX.Element to allow for formatted content
 }
 
 // Updated array of slides
 const slides: Slide[] = [
-  { title: "How to trust users", description: "Find your trusted Swarm users. By trusting them, you consent to the app coordinating LinkedIn engagement between you and these users. This includes managing likes on each other's posts, promoting mutual support within the network and optimizing tours and your company's collective Linkedin presence." },
-  { title: "How to add company posts", description: "As a company admin, amplify your LinkedIn Company Page content with ease. In the 'My post' section, you'll find a one-click solution to import company posts directly into your swarm. This seamless integration ensures your team stays aligned with official messaging, saves time, and empowers everyone to share company updates effortlessly. Expand your reach and maintain consistency across platforms with just a single click." },
-  { title: "How to create a post using AI", description: "Boost your social presence with ease. Share content by pasting LinkedIn URLs or create new posts with our AI tool. Enhance your messages with images and emojis for added impact. Craft engaging content for your network in seconds, whether you're sharing existing ideas or generating fresh ones." },
+  {
+    title: "Join swarm and login",
+    description: (
+      <ol className="list-decimal list-inside space-y-2">
+        <li>Open Content Swarm application</li>
+        <li>Enter your Swarm ID</li>
+        <li>Sign in with LinkedIn credentials</li>
+        <li>Accept user agreement</li>
+      </ol>
+    )
+  },
+  {
+    title: "How to trust users",
+    description: (
+      <p>
+        Find your trusted Swarm users. By trusting them, you consent to the app coordinating LinkedIn engagement between you and these users. This includes managing likes on each other's posts, promoting mutual support within the network and optimizing tours and your company's collective Linkedin presence.
+      </p>
+    )
+  },
+  {
+    title: "How to add company posts",
+    description: (
+      <p>
+        As a company admin, amplify your LinkedIn Company Page content with ease. In the 'My post' section, you'll find a one-click solution to import company posts directly into your swarm. This seamless integration ensures your team stays aligned with official messaging, saves time, and empowers everyone to share company updates effortlessly. Expand your reach and maintain consistency across platforms with just a single click.
+      </p>
+    )
+  },
+  {
+    title: "How to create a post using AI",
+    description: (
+      <p>
+        Boost your social presence with ease. Share content by pasting LinkedIn URLs or create new posts with our AI tool. Enhance your messages with images and emojis for added impact. Craft engaging content for your network in seconds, whether you're sharing existing ideas or generating fresh ones.
+      </p>
+    )
+  },
 ];
 
 export default function LinkedInSyncPage() {
@@ -69,12 +101,15 @@ export default function LinkedInSyncPage() {
             {/* Left column: Text content and buttons */}
             <div className="w-full md:w-1/2 mb-8 md:mb-0">
               <div className="text-left mb-8">
+                <p className="text-sm text-gray-400 mb-2">
+                  Step {currentSlide + 1} of {slides.length}
+                </p>
                 <h2 className="text-3xl font-extrabold text-white mb-4">
                   {slides[currentSlide].title}
                 </h2>
-                <p className="text-lg text-gray-300">
+                <div className="text-lg text-gray-300">
                   {slides[currentSlide].description}
-                </p>
+                </div>
               </div>
 
               {/* Navigation buttons */}
