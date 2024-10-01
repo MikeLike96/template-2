@@ -4,6 +4,9 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
+// Add this line to explicitly import JSX
+import type { JSX } from 'react';
+
 // Define the structure of a slide
 interface Slide {
   title: string;

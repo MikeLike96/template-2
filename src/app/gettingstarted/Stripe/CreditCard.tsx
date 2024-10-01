@@ -38,79 +38,89 @@ function CreditCardForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-300">
-          Name on Card
-        </label>
-        <input
-          type="text"
-          id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-          className="mt-1 block w-full rounded-md bg-gray-700 border-gray-600 text-white shadow-sm focus:border-orange-500 focus:ring-orange-500 py-3 px-4"
-          placeholder="John Doe"
-        />
-      </div>
-      <div>
-        <label htmlFor="cardNumber" className="block text-sm font-medium text-gray-300">
-          Card Number
-        </label>
-        <input
-          type="text"
-          id="cardNumber"
-          value={cardNumber}
-          onChange={(e) => setCardNumber(e.target.value)}
-          required
-          className="mt-1 block w-full rounded-md bg-gray-700 border-gray-600 text-white shadow-sm focus:border-orange-500 focus:ring-orange-500 py-3 px-4"
-          placeholder="1234 5678 9012 3456"
-        />
-      </div>
-      <div className="flex space-x-4">
-        <div className="flex-1">
-          <label htmlFor="expiry" className="block text-sm font-medium text-gray-300">
-            Expiration Date
+    <div>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-gray-300">
+            Name on Card
           </label>
           <input
             type="text"
-            id="expiry"
-            value={expiry}
-            onChange={(e) => setExpiry(e.target.value)}
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
             className="mt-1 block w-full rounded-md bg-gray-700 border-gray-600 text-white shadow-sm focus:border-orange-500 focus:ring-orange-500 py-3 px-4"
-            placeholder="MM / YY"
+            placeholder="John Doe"
           />
         </div>
-        <div className="flex-1">
-          <label htmlFor="cvc" className="block text-sm font-medium text-gray-300">
-            CVC
+        <div>
+          <label htmlFor="cardNumber" className="block text-sm font-medium text-gray-300">
+            Card Number
           </label>
           <input
             type="text"
-            id="cvc"
-            value={cvc}
-            onChange={(e) => setCvc(e.target.value)}
+            id="cardNumber"
+            value={cardNumber}
+            onChange={(e) => setCardNumber(e.target.value)}
             required
             className="mt-1 block w-full rounded-md bg-gray-700 border-gray-600 text-white shadow-sm focus:border-orange-500 focus:ring-orange-500 py-3 px-4"
-            placeholder="123"
+            placeholder="1234 5678 9012 3456"
           />
         </div>
+        <div className="flex space-x-4">
+          <div className="flex-1">
+            <label htmlFor="expiry" className="block text-sm font-medium text-gray-300">
+              Expiration Date
+            </label>
+            <input
+              type="text"
+              id="expiry"
+              value={expiry}
+              onChange={(e) => setExpiry(e.target.value)}
+              required
+              className="mt-1 block w-full rounded-md bg-gray-700 border-gray-600 text-white shadow-sm focus:border-orange-500 focus:ring-orange-500 py-3 px-4"
+              placeholder="MM / YY"
+            />
+          </div>
+          <div className="flex-1">
+            <label htmlFor="cvc" className="block text-sm font-medium text-gray-300">
+              CVC
+            </label>
+            <input
+              type="text"
+              id="cvc"
+              value={cvc}
+              onChange={(e) => setCvc(e.target.value)}
+              required
+              className="mt-1 block w-full rounded-md bg-gray-700 border-gray-600 text-white shadow-sm focus:border-orange-500 focus:ring-orange-500 py-3 px-4"
+              placeholder="123"
+            />
+          </div>
+        </div>
+        {error && (
+          <p className="text-red-500 text-sm">{error}</p>
+        )}
+        <button
+          type="submit"
+          disabled={isLoading}
+          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50"
+        >
+          {isLoading ? 'Processing...' : 'Start Free Trial'}
+        </button>
+        <p className="text-sm text-gray-400 text-center mt-2">
+          Your card won&apos;t be charged during the 14-day free trial.
+        </p>
+      </form>
+      <div className="mt-4 flex justify-center">
+        <Image
+          src="/poweredbystripe.png"
+          alt="Powered by Stripe"
+          width={120}
+          height={30}
+        />
       </div>
-      {error && (
-        <p className="text-red-500 text-sm">{error}</p>
-      )}
-      <button
-        type="submit"
-        disabled={isLoading}
-        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50"
-      >
-        {isLoading ? 'Processing...' : 'Start Free Trial'}
-      </button>
-      <p className="text-sm text-gray-400 text-center mt-2">
-        Your card won&apos;t be charged during the 14-day free trial.
-      </p>
-    </form>
+    </div>
   );
 }
 
