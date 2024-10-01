@@ -161,6 +161,13 @@ export default function InviteMembersPage() {
                         disabled={emails.length >= maxEmails}
                       />
                     </div>
+                    <button
+                      type="button"
+                      onClick={() => router.push('/gettingstarted/success')}
+                      className="mt-2 text-sm text-gray-400 hover:text-white transition-colors"
+                    >
+                      Skip this step for now
+                    </button>
                   </div>
                   <button
                     type="submit"
