@@ -5,6 +5,9 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 
+// Add this import for the div element
+import { HTMLAttributes } from 'react';
+
 export function OnboardingForm2() {
   // State variables for form fields
   const [firstName, setFirstName] = useState('');

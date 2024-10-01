@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function InviteMembersPage() {
   const router = useRouter();
@@ -44,8 +45,8 @@ export default function InviteMembersPage() {
     // Here you would typically send the emails to your backend
     console.log('Emails to invite:', emails);
     
-    // Redirect to the success page
-    router.push('/gettingstarted/success');
+    // Redirect to the slides-walkthrough page
+    router.push('/gettingstarted/slides-walkthrough');
   };
 
   const handleBack = () => {
@@ -161,21 +162,22 @@ export default function InviteMembersPage() {
                         disabled={emails.length >= maxEmails}
                       />
                     </div>
+                  </div>
+                  <div className="flex flex-col space-y-4">
                     <button
-                      type="button"
-                      onClick={() => router.push('/gettingstarted/success')}
-                      className="mt-2 text-sm text-gray-400 hover:text-white transition-colors"
+                      type="submit"
+                      disabled={isLoading || emails.length === 0}
+                      className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50"
+                    >
+                      {isLoading ? 'Processing...' : 'Confirm and Continue'}
+                    </button>
+                    <Link
+                      href="/gettingstarted/slides-walkthrough"
+                      className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-300 bg-transparent hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors"
                     >
                       Skip this step for now
-                    </button>
+                    </Link>
                   </div>
-                  <button
-                    type="submit"
-                    disabled={isLoading || emails.length === 0}
-                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50"
-                  >
-                    {isLoading ? 'Processing...' : 'Confirm and Continue'}
-                  </button>
                 </form>
               </div>
             </div>
