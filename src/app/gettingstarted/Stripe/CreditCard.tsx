@@ -106,7 +106,7 @@ function CreditCardForm() {
           disabled={isLoading}
           className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50"
         >
-          {isLoading ? 'Processing...' : 'Start Free Trial'}
+          {isLoading ? 'Processing...' : 'Begin'}
         </button>
         <p className="text-sm text-gray-400 text-center mt-2">
           Your card won&apos;t be charged during the 14-day free trial.

@@ -15,9 +15,9 @@ interface Slide {
 
 // Updated array of slides
 const slides: Slide[] = [
-  { title: "Trusting Overview - How to trust users", description: "Learn how to trust with users on our platform." },
-  { title: "Add Company Post - How to add company posts", description: "Discover the process of adding company posts to your profile." },
-  { title: "Creating a Post - How to create a post using built-in AI", description: "Explore our AI-powered tools for effortless content creation." },
+  { title: "How to trust users", description: "Find your trusted Swarm users. By trusting them, you consent to the app coordinating LinkedIn engagement between you and these users. This includes managing likes on each other's posts, promoting mutual support within the network and optimizing tours and your company's collective Linkedin presence." },
+  { title: "How to add company posts", description: "As a company admin, amplify your LinkedIn Company Page content with ease. In the 'My post' section, you'll find a one-click solution to import company posts directly into your swarm. This seamless integration ensures your team stays aligned with official messaging, saves time, and empowers everyone to share company updates effortlessly. Expand your reach and maintain consistency across platforms with just a single click." },
+  { title: "How to create a post using AI", description: "Boost your social presence with ease. Share content by pasting LinkedIn URLs or create new posts with our AI tool. Enhance your messages with images and emojis for added impact. Craft engaging content for your network in seconds, whether you're sharing existing ideas or generating fresh ones." },
 ];
 
 export default function LinkedInSyncPage() {
@@ -65,47 +65,49 @@ export default function LinkedInSyncPage() {
       {/* Main content */}
       <div className="flex-grow flex items-center justify-center p-4">
         <div className="max-w-6xl w-full">
-          <div className="flex flex-col items-center">
-            {/* Slide content */}
-            <div className="w-full max-w-2xl text-center mb-8">
-              <h2 className="text-3xl font-extrabold text-white mb-4">
-                {slides[currentSlide].title}
-              </h2>
-              <p className="text-lg text-gray-300">
-                {slides[currentSlide].description}
-              </p>
-            </div>
+          <div className="flex flex-col md:flex-row items-center md:items-start md:space-x-8">
+            {/* Left column: Text content and buttons */}
+            <div className="w-full md:w-1/2 mb-8 md:mb-0">
+              <div className="text-left mb-8">
+                <h2 className="text-3xl font-extrabold text-white mb-4">
+                  {slides[currentSlide].title}
+                </h2>
+                <p className="text-lg text-gray-300">
+                  {slides[currentSlide].description}
+                </p>
+              </div>
 
-            {/* Image placeholder */}
-            <div className="w-full max-w-xl relative mb-8">
-              <div className="bg-gray-700 rounded-lg flex items-center justify-center" style={{ aspectRatio: '16 / 9' }}>
-                <p className="text-gray-400 text-lg">Slide {currentSlide + 1} Image</p>
+              {/* Navigation buttons */}
+              <div className="flex space-x-4">
+                <button
+                  onClick={handleBack}
+                  className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+                >
+                  Back
+                </button>
+                {currentSlide < slides.length - 1 ? (
+                  <button
+                    onClick={handleNext}
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+                  >
+                    Next
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => router.push('/gettingstarted/success')}
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                  >
+                    Finish
+                  </button>
+                )}
               </div>
             </div>
 
-            {/* Navigation buttons */}
-            <div className="flex justify-between w-full max-w-xl">
-              <button
-                onClick={handleBack}
-                className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
-              >
-                Back
-              </button>
-              {currentSlide < slides.length - 1 ? (
-                <button
-                  onClick={handleNext}
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
-                >
-                  Next
-                </button>
-              ) : (
-                <button
-                  onClick={() => router.push('/gettingstarted/success')}
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                >
-                  Finish
-                </button>
-              )}
+            {/* Right column: Image placeholder */}
+            <div className="w-full md:w-1/2">
+              <div className="bg-gray-700 rounded-lg flex items-center justify-center" style={{ aspectRatio: '16 / 9' }}>
+                <p className="text-gray-400 text-lg">Slide {currentSlide + 1} Image</p>
+              </div>
             </div>
           </div>
         </div>
